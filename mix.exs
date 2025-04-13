@@ -35,12 +35,10 @@ defmodule Rougarou.MixProject do
       {:absinthe_plug, "~> 1.5.8"},
       {:bandit, "~> 1.0"},
       {:dataloader, "~> 2.0.0"},
-      {:ecto_commons, "~> 0.3.4"},
       {:ecto_identifier, "~> 0.2.0"},
       {:ecto_sql, "~> 3.12"},
       {:jason, "~> 1.4"},
       {:postgrex, "~> 0.19"},
-      {:hammox, "~> 0.7", only: :test},
       {:credo, "~> 1.7.11", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
