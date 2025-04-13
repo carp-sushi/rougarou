@@ -1,0 +1,15 @@
+defmodule Rougarou.Context.Clamp do
+  @moduledoc false
+
+  # Read page size limits from compile-time config
+  @min_page_size Application.compile_env(:rougarou, :min_page_size)
+  @max_page_size Application.compile_env(:rougarou, :max_page_size)
+
+  @doc "Clamp a page size within a range"
+  def clamp(first) when first < @min_page_size, do: @min_page_size
+  def clamp(first) when first > @max_page_size, do: @max_page_size
+  def clamp(first), do: first
+
+  @doc "Ensure a number is not negative"
+  def non_negative(offset), do: if(offset < 0, do: 0, else: offset)
+end
