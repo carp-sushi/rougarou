@@ -34,6 +34,7 @@ defmodule Rougarou.MixProject do
       {:absinthe, "~> 1.7"},
       {:absinthe_plug, "~> 1.5.8"},
       {:bandit, "~> 1.0"},
+      {:cors_plug, "~> 3.0"},
       {:dataloader, "~> 2.0.0"},
       {:ecto_identifier, "~> 0.2.0"},
       {:ecto_sql, "~> 3.12"},

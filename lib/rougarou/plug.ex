@@ -10,8 +10,8 @@ defmodule Rougarou.Plug do
 
   @uri_base Application.compile_env(:rougarou, :uri_base)
 
-  plug(Plug.Logger)
-
+  plug(Plug.Logger, log: :debug)
+  plug(CORSPlug)
   plug(:match)
 
   # Use the Jason library for JSON parsing
