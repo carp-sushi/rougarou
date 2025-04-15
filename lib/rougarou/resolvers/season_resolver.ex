@@ -25,4 +25,36 @@ defmodule Rougarou.Resolvers.SeasonResolver do
   def list_seasons(_parent, _args, _resolution) do
     Result.success(Seasons.first_page())
   end
+
+  @doc "Resolver function for creating seasons"
+  def create_season(_parent, args, _resolution) do
+    case Seasons.create(args) do
+      {:error, cs} -> Result.error("Failed to create season", cs)
+      result -> result
+    end
+  end
+
+  @doc "Resolver function for updating season name"
+  def update_season(_parent, %{id: id, name: name}, _resolution) do
+    case Seasons.get(id) do
+      nil -> Result.error("Season not found: #{id}")
+      season -> update_season(season, name)
+    end
+  end
+
+  # Update season helper
+  defp update_season(season, name) do
+    case Seasons.update(season, %{name: name}) do
+      {:error, cs} -> Result.error("Failed to update season", cs)
+      result -> result
+    end
+  end
+
+  @doc "Resolver function for deleting seasons"
+  def delete_season(_parent, %{id: id}, _resolution) do
+    case Seasons.get(id) do
+      nil -> Result.error("Season not found: #{id}")
+      season -> Seasons.delete(season)
+    end
+  end
 end

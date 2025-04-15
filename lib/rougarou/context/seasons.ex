@@ -28,6 +28,18 @@ defmodule Rougarou.Context.Seasons do
     |> Repo.all()
   end
 
+  @doc "Create a season"
+  def create(args),
+    do: Repo.insert(Season.changeset(args))
+
+  @doc "Update a season"
+  def update(season, args),
+    do: Repo.update(Season.changeset(season, args))
+
+  @doc "Delete a season"
+  def delete(season),
+    do: Repo.delete(season)
+
   @doc "Defines a new ecto data source"
   def datasource, do: Dataloader.Ecto.new(Repo)
 end

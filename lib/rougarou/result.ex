@@ -5,9 +5,7 @@ defmodule Rougarou.Result do
   alias Rougarou.Error
 
   @doc "Resolution success"
-  def success(value) do
-    {:ok, value}
-  end
+  def success(value), do: {:ok, value}
 
   @doc "Resolution failue"
   def error(message), do: Error.new(message)
